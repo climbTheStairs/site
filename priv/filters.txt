@@ -22,6 +22,9 @@ mail.google.com###gbar, img[src$="/cleardot.gif"]
 www.google.com,images.google.com##^script:has-text(consentCookiePayload)
 grammarly.com##._1X8pZ-overlay
 howtogeek.com##.email-overlay, .email-overlay + .overlay-wrapper
+!! Debloat IFSL
+iflscience.com##.social, .social-shares, .articleSubWidgetPlace, .more-science, .sidebar, .footer, a[href="/subscribe"]
+iflscience.com##.main-content:style(width: 100% !important;)
 !! Imgur bloat
 imgur.com##.App-cover.GalleryCover, .Gallery-EngagementBar, .Gallery-Sidebar, .badges-wrapper, .BottomRecirc, .Footer-wrapper, iframe
 instagram.com##.Yx5HN.RnEpo:has-text(Turn on Notifications)
