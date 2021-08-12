@@ -1,3 +1,5 @@
+* beacon.dropbox.com * block
+* bolt.dropbox.com * block
 * log.people.cn * block
 * 1clickcdn.ru * block
 * 1dmp.io * block
