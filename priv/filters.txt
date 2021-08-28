@@ -100,6 +100,7 @@ zapier.com##.hello-pop-up, .hello-pop-up--not-top
 ||google.com/*^name=tz^$script
 ||google.com/*^v=tz^$image
 ||google.com/*^tz=*^$image
+||docs.google.com/*/naLogImpressions^$xhr,important
 ||youtube.com/api/stats/$image
 ||chromium.org/v1/logging^$xhr,important
 www.google.com##+js(ignore-target-blank)
