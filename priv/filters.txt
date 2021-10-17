@@ -86,7 +86,7 @@ zapier.com##.hello-pop-up, .hello-pop-up--not-top
 *$image,domain=fcdn.stream|twist.moe|vidsrc.*
 *$script,domain=ecosia.org|fcdn.stream|mail.google.com|lancashiretelegraph.co.uk|reddit.com|theguardian.com|usatoday.com|vidsrc.*
 *$inline-script,domain=ecosia.org|mail.google.com|lancashiretelegraph.co.uk
-*$xhr,websocket,domain=dropbox.com|ecosia.org|fcdn.stream|imgur.com|lancashiretelegraph.co.uk|quora.com|realsimple.com|reddit.com|vidsrc.*
+*$xhr,websocket,domain=dropbox.com|ecosia.org|fcdn.stream|imgur.com|lancashiretelegraph.co.uk|realsimple.com|reddit.com|vidsrc.*
 *$frame,domain=foxnews.com
 *$ping
 
@@ -101,6 +101,7 @@ zapier.com##.hello-pop-up, .hello-pop-up--not-top
 ||google.com/*^v=tz^$image
 ||google.com/*^tz=*^$image
 ||docs.google.com/*/naLogImpressions^$xhr,important
+||docs.google.com/forms/*/draftresponse^$xhr,important
 ||youtube.com/api/stats/$image
 ||chromium.org/v1/logging^$xhr,important
 www.google.com##+js(ignore-target-blank)
