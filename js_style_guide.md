@@ -4,7 +4,8 @@
 
 - Always declare variables before use to avoid accidental globals.
 
-- Use `const` to declare variables, unless it must be reassigned; then, use `let`. Never use `var`.
+- Use `const` to declare variables, unless it must be reassigned;
+  then, use `let`. Never use `var`.
 
     ```javascript
     // avoid
@@ -16,7 +17,8 @@
     let y = 2
     ```
     
-- Use one `const` or `let` per variable definition; never combine definitions with `,` ([outside of control statements](#iterators)).
+- Use one `const` or `let` per variable definition;
+  never combine definitions with `,` ([outside of control statements](#iterators)).
     
     ```javascript
     // avoid
@@ -41,7 +43,8 @@
     let z = 3
     ```
 
-- Never save references to `this`. Use instead arrow functions or `Function.prototype.bind()`.
+- Never save references to `this`.
+  Use instead arrow functions or `Function.prototype.bind()`.
     
     ```javascript
     // avoid
@@ -73,13 +76,17 @@
     const [y] = arr
     ```
     
-- All declared or defined variables must be used; unused variables are forbidden.
+- All declared or defined variables must be used;
+  unused variables are forbidden.
 
 ## Objects
 
-- Use computed property names when creating objects with dynamic property names.
+- Use computed property names
+  when creating objects with dynamic property names.
 
-    > Why? They allow all the properties of an object to be defined in one place.
+    > Why?
+    > They allow all the properties of an object
+    > to be defined in one place.
     
     ```javascript
     // avoid
@@ -111,7 +118,8 @@
 
 - Use property value shorthand.
     
-    > Why? It is shorter and more descriptive.
+    > Why?
+    > It is shorter and more descriptive.
 
     ```javascript
     // avoid
@@ -176,9 +184,11 @@
     const arr = [...obj]
     ```
 
-- Use `Array.prototype.from()` instead of spread for mapping over an iterable object.
+- Use `Array.prototype.from()`
+  instead of spread for mapping over an iterable object.
 
-    > Why? It avoids creating an intermediate array.
+    > Why?
+    > It avoids creating an intermediate array.
     
     ```javascript
     const obj = document.querySelectorAll("*")
@@ -190,9 +200,11 @@
     const arr = Array.from(obj, processArr)
     ```
     
-- Use `Array.prototype.from()` for converting an array-like object to an array.
+- Use `Array.prototype.from()`
+  for converting an array-like object to an array.
     
-    > Why? Spreads do not work on non-iterable objects.
+    > Why?
+    > Spreads do not work on non-iterable objects.
 
     ```javascript
     const obj = { 0: 1, 1: 2, 2: 3 }
@@ -237,7 +249,9 @@
 
 ## Strings
 
-- Use double quotes `""` for strings instead of single quotes `''` (and instead of templates when they are unnecessary).
+- Use double quotes `""` for strings
+  instead of single quotes `''`
+  (and instead of templates when they are unnecessary).
 
     ```javascript
     // avoid
@@ -248,7 +262,8 @@
     const str = "string"
     ```
 
-- When programmatically building up strings, use template strings when that is clearer.
+- When programmatically building up strings,
+  use template strings when that is clearer.
 
     ```javascript
     // avoid
@@ -270,7 +285,9 @@
 
 ## Functions
 
-- Use anonymous function expressions assigned to a `const` variable instead of function declarations.
+- Use anonymous function expressions
+  assigned to a `const` variable
+  instead of function declarations.
 
     ```javascript
     // avoid
@@ -290,7 +307,8 @@
     const fn = () => {}
     ```
 
-- In arrow functions consist of a single, *short* statement, braces may be omitted to use the implicit return.
+- In arrow functions consist of a single, *short* statement,
+  braces may be omitted to use the implicit return.
 
     ```javascript
     // avoid
@@ -302,9 +320,12 @@
     const fn = () => fn()
     ```
     
-- Never use `arguments`, use rest syntax instead.
+- Never use `arguments`;
+  use rest syntax instead.
     
-    > Why? `arguments` is not an array, and it does not exist inside arrow functions.
+    > Why?
+    > `arguments` is not an array,
+    > and it does not exist inside arrow functions.
 
     ```javascript
     // avoid
@@ -330,7 +351,8 @@
     
 - Avoid side effects with default parameters.
 
-    > Why? They are confusing to reason about.
+    > Why?
+    > They are confusing to reason about.
 
     ```javascript
     // avoid
@@ -340,7 +362,9 @@
     
 - Use spread to call variadic functions.
 
-    > Why? It is much cleaner and simpler, and `new` does not easily work with `Function.prototype.apply()`.
+    > Why?
+    > It is much cleaner and simpler,
+    > and `new` does not easily work with `Function.prototype.apply()`.
 
     ```javascript
     // avoid
@@ -352,7 +376,9 @@
     const d = new Date(...args)
     ```
 
-- When calling a function, arguments (both single-line and multiline) should be [formatted the same as an array](#arrays).
+- When calling a function, arguments
+  (both single-line and multiline)
+  should be [formatted the same as an array](#arrays).
 
     ```javascript
     // avoid
@@ -370,7 +396,8 @@
     )
     ```
 
-- In arrow functions, always include parentheses around arguments for consistency.
+- In arrow functions,
+  always include parentheses around arguments for consistency.
 
     ```javascript
     // avoid
@@ -382,7 +409,9 @@
 
 ## Classes and constructors
 
-- Use anonymous class expressions assigned to a `const` variable instead of class declarations.
+- Use anonymous class expressions
+  assigned to a `const` variable
+  instead of class declarations.
 
     ```javascript
     // avoid
@@ -392,7 +421,8 @@
     const C = class {}
     ```
 
-- Always use `class`. Avoid manipulating `prototype` directly.
+- Always use `class`.
+  Avoid manipulating `prototype` directly.
 
     ```javascript
     // avoid
@@ -422,7 +452,8 @@
     }
     ```
     
-- Classes have a default constructor if one is not specified. Avoid unnecessary constructor functions.
+- Classes have a default constructor if one is not specified.
+  Avoid unnecessary constructor functions.
 
 ## Iterators
 
@@ -444,9 +475,11 @@
     })
     ```
     
-- Reduce activity in loops. Assign properties that are accessed each iteration to variables.
+- Reduce activity in loops.
+  Assign properties that are accessed each iteration to variables.
     
-    > Why? Accessing a property each iteration can be inefficient.
+    > Why?
+    > Accessing a property each iteration can be inefficient.
     
     ```javascript
     // avoid
@@ -494,7 +527,8 @@
         // do stuff
     ```
     
-- Use shortcuts in control statements, as expressions will be coerced into booleans.
+- Use shortcuts in control statements,
+  as expressions will be coerced into booleans.
 
     ```javascript
     // avoid
@@ -506,7 +540,8 @@
         // do stuff
     ```
     
-- When mixing operators, enclose them in parentheses if that improves clarity.
+- When mixing operators,
+  enclose them in parentheses if that improves clarity.
 
     ```javascript
     // avoid
@@ -516,7 +551,8 @@
     const condition = (fn(x) + (y * 10) > z) || (x && arr.length)
     ```
 
-- When a multiline expression with logical operators, the operators must end lines.
+- When a multiline expression with logical operators,
+  the operators must end lines.
 
     ```javascript
     // okay
@@ -600,7 +636,8 @@
     obj[x]()
     ```
     
-- If an `if` block returns or throws an error, do not use subsequent `else` or `else if` blocks.
+- If an `if` block returns or throws an error,
+  do not use subsequent `else` or `else if` blocks.
 
     ```javascript
     // avoid
@@ -619,10 +656,10 @@
     fn()
     ```
     
-- The use of short circuits in place of conditionals is discouraged.
+- Short circuits should not be used in place of conditionals.
 
     ```javascript
-    // discouraged
+    // avoid
     condition && fn()
     
     // okay
@@ -647,7 +684,9 @@
      */
     ```
     
-- Use `//` for single-line comments. Always place single-line comments on a separate line above the subject of the comment.
+- Use `//` for single-line comments.
+  Always place single-line comments
+  on a separate line above the subject of the comment.
 
     ```javascript
     // avoid
@@ -674,7 +713,8 @@
 
 ## Lines
 
-- Related code may be grouped with one blank line. Never leave multiple blank lines together.
+- Related code may be grouped with one blank line.
+  Never leave multiple blank lines together.
 
     ```javascript
     // avoid
@@ -691,9 +731,12 @@
     fn(x)
     ```
 
-- Lines of code *should* be kept short and *must* be under eighty characters.
+- Lines of code *should* be kept short
+  and *must* be under eighty characters.
 
-- Comments and strings must not cause their lines to exceed seventy-two characters. If they do, they must be broken up into multiple lines.
+- Comments and strings must not
+  cause their lines to exceed seventy-two characters.
+  If they do, they must be broken up into multiple lines.
 
     ```javascript
     // avoid
@@ -715,7 +758,8 @@
     )
     ```
 
-- Never end a line with an `=` assignment. If the line is too long, surround the assigned value in parentheses.
+- Never end a line with an `=` assignment.
+  If the line is too long, surround the assigned value in parentheses.
 
     ```javascript
     // avoid
@@ -750,7 +794,10 @@
 
 - Indent with soft tabs (spaces) of size four.
 
-    > Why? Soft tabs ensure the code always appears the same, and four spaces makes the code more readable and discourages excessive nesting.
+    > Why?
+    > Soft tabs ensure the code always appears the same,
+    > and four spaces makes the code more readable
+    > and discourages excessive nesting.
     
     ```javascript
     (() => {
@@ -776,7 +823,8 @@
     fn(x)
     ```
 
-- Never use spaces to pad the inside of curly braces in template literals.
+- Never use spaces to pad the inside
+  of curly braces in template literals.
 
     ```javascript
     // avoid
@@ -786,7 +834,8 @@
     const str = `thank you, ${user}`
     ```
     
-- Use one space to pad the inside of curly braces in objects and functions, unless they are empty.
+- Use one space to pad the inside of curly braces
+  in objects and functions, unless they are empty.
 
     ```javascript
     // avoid
@@ -800,7 +849,8 @@
 
 - Never use vertical alignment.
 
-    > Why? It's difficult to manage as the code changes.
+    > Why?
+    > It's difficult to manage as the code changes.
 
     ```javascript
     // avoid
@@ -812,9 +862,12 @@
     const veryLongName = { x: 12345, y: 6789 }
     ```
 
-- Place one space between the keyword and opening parenthesis in control statements.
+- Place one space
+  between the keyword and opening parenthesis
+  in control statements.
 
-    > Why? This visually distinguishes keywords from function invocations.
+    > Why?
+    > This visually distinguishes keywords from function invocations.
 
     ```javascript
     // avoid
@@ -826,9 +879,12 @@
         // Do stuff
     ```
 
-- Never place a space between the function name and opening parenthesis in function expressions and invocations.
+- Never place a space
+  between the function name and opening parenthesis
+  in function expressions and invocations.
 
-    > Why? This visually distinguishes functions from keywords.
+    > Why?
+    > This visually distinguishes functions from keywords.
 
     ```javascript
     // avoid
@@ -868,7 +924,9 @@
     let AnotherLongerVarName = {}
     ```
 
-- Use uppercase for constants. Properties within constants must be written normally (in camel case).
+- Use uppercase for constants.
+  Properties within constants
+  must be written normally (in camel case).
 
     ```javascript
     // okay
@@ -897,7 +955,13 @@
     const _$varName = document.querySelector(".secret")
     ```
 
-- Acronyms and initialisms should be treated as regular words instead of always being written in uppercase.
+- Acronyms and initialisms should be treated as regular words
+  instead of always being written in uppercase.
+
+    > Why?
+    > Numerous consecutive acronyms lead to problems
+    > and confusion betwee camelCase and PascalCase
+    > (e.g. `XMLHTTPRequest`)
 
     ```javascript
     // avoid
@@ -923,7 +987,9 @@
 
 - Never start a line with `[`, `(`, `` ` ``, `+`, `*`, `/`, `-`, `,`, or `.`.
 
-    > Why? They may cause unexpected behavior when semicolons are omitted.
+    > Why?
+    > They may cause unexpected behavior
+    > when semicolons are omitted.
     
     ```javascript
     // avoid
@@ -957,7 +1023,8 @@
     // do stuff
     ```
 
-- Use `Number.isNaN` and `Number.isFinite` instead of `isNaN` and `isFinite`.
+- Use `Number.isNaN` and `Number.isFinite`
+  instead of `isNaN` and `isFinite`.
 
     ```javascript
     // avoid
@@ -986,8 +1053,26 @@
 
 Copyright (c) 2012 Airbnb
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge,
+to any person obtaining a copy of this software
+and associated documentation files (the 'Software'),
+to deal in the Software without restriction,
+including without limitation the rights
+to use, copy, modify, merge, publish, distribute,
+sublicense, and/or sell copies of the Software,
+and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice
+shall be included in all copies
+or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED 'AS IS',
+WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
+BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
+OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
