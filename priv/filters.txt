@@ -284,6 +284,7 @@ www.google.com###rc-imageselect :is(div.rc-imageselect-tile, .rc-imageselect-dyn
 @@||dood.to/pass_md5/$xhr
 
 !! Misc
+@@||4chan.org/adv/
 @@||dropbox.com/sharing/fetch_user_content_link^$xhr,1p
 @@||cfl.dropboxstatic.com/static/js/langpack/icu-en.json^$xhr,domain=dropbox.com
 @@||s.pushauction.com^$css,domain=vi.vipr.ebaydesc.com
@@ -309,13 +310,13 @@ www.google.com###rc-imageselect :is(div.rc-imageselect-tile, .rc-imageselect-dyn
 @@/favicon.ico^$image,3p,domain=ucourses.com,badfilter
 
 ! Unlazy-load
-cracked.com,djhjmedia.com,fandom.com,knowyourmeme.com,lifewire.com,psychologytoday.com,samuitimes.com##+js(unlazy-load)
+buzzfeed.com,cracked.com,djhjmedia.com,fandom.com,knowyourmeme.com,lifewire.com,pethelpful.com,psychologytoday.com,samuitimes.com##+js(unlazy-load)
 looper.com,snopes.com##+js(unlazy-load, data-lazy-src)
 cloudsavvyit.com##+js(unlazy-load, data-pagespeed-lazy-src)
 wikihow.com##+js(unlazy-load, data-srclarge)
-cbsnews.com,iflscience.com,makeuseof.com##+js(unlazy-load, data-srcset, srcset)
+cbsnews.com,iflscience.com,makeuseof.com,pethelpful.com##+js(unlazy-load, data-srcset, srcset)
 gadgetstouse.com##img:style(opacity: 1 !important;)
 fandom.com,lifewire.com##+js(remove-class, lazyload)
 djhjmedia.com##+js(remove-class, animate-lazy)
-cbsnews.com,cloudsavvyit.com,cracked.com,djhjmedia.com,iflscience.com,knowyourmeme.com,lifewire.com,looper.com,makeuseof.com,psychologytoday.com,samuitimes.com,snopes.com,wikihow.com##^script
-
+pethelpful.com##+js(remove-class, is-waiting-to-load)
+buzzfeed.com,cbsnews.com,cloudsavvyit.com,cracked.com,djhjmedia.com,iflscience.com,knowyourmeme.com,lifewire.com,looper.com,makeuseof.com,pethelpful.com,psychologytoday.com,samuitimes.com,snopes.com,wikihow.com##^script
