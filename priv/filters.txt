@@ -44,6 +44,7 @@ quora.com##.qu-zIndex--alert.qu-overflow--hidden.qu-justifyContent--center.qu-al
 quora.com##.q-box.qu-overflow--hidden:style(filter: initial !important; inset: initial !important; overflow: initial !important; position: initial !important;)
 realsimple.com##.articleContainer__sharebar
 reddit.com##.ad-container, [id^="ad_"], .listingsignupbar, .premium-banner-outer, .premium-banner, .thing.promotedlink, #hsts_pixel
+redhat.com##.redhat-cookie-banner
 !! Obscure posts from liberal subreddits
 reddit.com##body.listing-page #siteTable > .thing:has(.tagline > .subreddit:has-text(/^r/(AgainstHateSubreddits|AmItheAsshole|atheism|baseball|BlackPeopleTwitter|byebyejob|CapitolConsequences|China|Conservative|Coronavirus|dankmemes|facepalm|FragileMaleRedditor|FragileWhiteRedditor|FuckYouKaren|funny|hockey|iamatotalpieceofshit|iamverybadass|iamverysmart|IdiotsInCars|JusticeServed|LeopardsAteMyFace|memes|mildlyinteresting|Minecraft|MurderedByAOC|MurderedByWords|nba|news|offmychest|PewdiepieSubmissions|pics|PoliticalHumor|politics|PublicFreakout|SelfAwarewolves|Showerthoughts|TheLeftCantMeme|TheRightCantMeme|trashy|WhitePeopleTwitter|WinStupidPrizes|worldnews)$/i)):style(opacity: 0.1;)
 !! COVID propaganda
@@ -96,6 +97,7 @@ zapier.com##.hello-pop-up, .hello-pop-up--not-top
 ||play.google.com/log^$xhr,important
 ||google.com/*/cleardot.gif^$image,redirect=1x1.gif
 ||gstatic.com/*/cleardot.gif^$image,redirect=1x1.gif
+||google.com/maps/preview/log204^$image
 !!! Weird Gmail timezone tracking thing
 ||google.com/*^name=tz^$script
 ||google.com/*^v=tz^$image
@@ -251,6 +253,7 @@ www.google.com###rc-imageselect :is(div.rc-imageselect-tile, .rc-imageselect-dyn
 @@||reddit.com/api/unsave^$xhr,1p
 @@||reddit.com/api/vote^$xhr,1p
 @@||reddit.com/user/*/about.json^$xhr,1p
+@@||oauth.reddit.com/api/v2/gold/purchase_package_details^$xhr,1p
 !!! Registration
 @@||reddit.com/api/check_username.json^$xhr,1p
 @@||reddit.com/api/register/$xhr,1p
@@ -289,6 +292,9 @@ www.google.com###rc-imageselect :is(div.rc-imageselect-tile, .rc-imageselect-dyn
 @@||cfl.dropboxstatic.com/static/js/langpack/icu-en.json^$xhr,domain=dropbox.com
 @@||s.pushauction.com^$css,domain=vi.vipr.ebaydesc.com
 @@||ecosia.org/images^$script,inline-script,xhr,1p
+@@||api.imgur.com/3/album^$xhr,1p
+@@||api.imgur.com/3/image^$xhr,1p
+@@||api.imgur.com/3/upload/checkcaptcha^$xhr,1p
 @@||api.imgur.com/post/v1/albums/$xhr,1p
 @@||api.imgur.com/post/v1/media/$xhr,1p
 @@||api.imgur.com/comment/v1/comments^$xhr,1p
@@ -310,13 +316,16 @@ www.google.com###rc-imageselect :is(div.rc-imageselect-tile, .rc-imageselect-dyn
 @@/favicon.ico^$image,3p,domain=ucourses.com,badfilter
 
 ! Unlazy-load
-buzzfeed.com,cracked.com,djhjmedia.com,fandom.com,knowyourmeme.com,lifewire.com,pethelpful.com,psychologytoday.com,samuitimes.com##+js(unlazy-load)
+buzzfeed.com,cracked.com,djhjmedia.com,fandom.com,knowyourmeme.com,lifewire.com,pethelpful.com,psychologytoday.com,redhat.com,samuitimes.com,theonering.net##+js(unlazy-load)
 looper.com,snopes.com##+js(unlazy-load, data-lazy-src)
 cloudsavvyit.com##+js(unlazy-load, data-pagespeed-lazy-src)
 wikihow.com##+js(unlazy-load, data-srclarge)
 cbsnews.com,iflscience.com,makeuseof.com,pethelpful.com##+js(unlazy-load, data-srcset, srcset)
+myfreeppt.com##+js(unlazy-load, data-lazy-srcset, srcset)
 gadgetstouse.com##img:style(opacity: 1 !important;)
 fandom.com,lifewire.com##+js(remove-class, lazyload)
 djhjmedia.com##+js(remove-class, animate-lazy)
 pethelpful.com##+js(remove-class, is-waiting-to-load)
-buzzfeed.com,cbsnews.com,cloudsavvyit.com,cracked.com,djhjmedia.com,iflscience.com,knowyourmeme.com,lifewire.com,looper.com,makeuseof.com,pethelpful.com,psychologytoday.com,samuitimes.com,snopes.com,wikihow.com##^script
+myfreeppt.com##+js(remove-class, jetpack-lazy-image)
+redhat.com##+js(remove-class, b-lazy|b-responsive|media--loading|is-b-loading)
+buzzfeed.com,cbsnews.com,cloudsavvyit.com,cracked.com,djhjmedia.com,iflscience.com,knowyourmeme.com,lifewire.com,looper.com,makeuseof.com,myfreeppt.com,pethelpful.com,psychologytoday.com,redhat.com,samuitimes.com,snopes.com,theonering.net,wikihow.com##^script
