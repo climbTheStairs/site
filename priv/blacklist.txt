@@ -972,7 +972,6 @@
 * videoplayerhub.com * block
 * viglink.com * block
 * vilynx.com * block
-* vimeo.com * block
 * vindicosuite.com * block
 * vipicmou.net * block
 * visualwebsiteoptimizer.com * block
