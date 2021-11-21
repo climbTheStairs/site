@@ -9,9 +9,6 @@
     margin: 0;
     padding: 0;
 }
-*:focus {
-    outline: none;
-}
 
 ::selection {
     background: #0f0;
