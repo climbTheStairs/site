@@ -250,6 +250,7 @@ www.google.com###rc-imageselect :is(div.rc-imageselect-tile, .rc-imageselect-dyn
 @@||reddit.com/api/subscribe^$xhr,1p
 @@||reddit.com/api/update_email^$xhr,1p
 @@||reddit.com/api/update_password^$xhr,1p
+@@||reddit.com/api/unfriend^$xhr,1p
 @@||reddit.com/api/unsave^$xhr,1p
 @@||reddit.com/api/vote^$xhr,1p
 @@||reddit.com/user/*/about.json^$xhr,1p
