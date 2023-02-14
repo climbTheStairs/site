@@ -1,0 +1,32 @@
+table {
+	border-collapse: collapse;
+	border: var(--table-border);
+	width: 100%;
+}
+thead {
+	background: var(--table-thead-bg);
+}
+th, td {
+	border: var(--table-border);
+	padding: var(--table-cell-padding-block) var(--table-cell-padding-inline);
+}
+
+thead th.sortable[scope="col"] {
+	cursor: pointer;
+	/* `px` in `0px` is necessary for fallback to work with `calc` */
+	padding-right: calc(var(--table-cell-padding-inline, 0px) + 10px);
+}
+thead th.sortable[scope="col"] {
+	/* url: <https://en.wikipedia.org/w/resources/src/jquery.tablesorter.styles/images/sort_both.svg> */
+	background-image: url("data:image/svg+xml,%3C?xml%20version=%221.0%22%20encoding=%22UTF-8%22?%3E%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2221%22%20height=%229%22%20viewBox=%220%200%2021%209%22%3E%20%3Cpath%20d=%22m14.5%205-4%204-4-4zm0-1-4-4-4%204z%22/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: center right;
+}
+thead th.sortable[scope="col"].sort-asc {
+	/* url: <https://en.wikipedia.org/w/resources/src/jquery.tablesorter.styles/images/sort_down.svg> */
+	background-image: url("data:image/svg+xml,%3C?xml%20version=%221.0%22%20encoding=%22UTF-8%22?%3E%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2221%22%20height=%224%22%20viewBox=%220%200%2021%204%22%3E%20%3Cpath%20d=%22m14.5%200-4%204-4-4z%22/%3E%3C/svg%3E");
+}
+thead th.sortable[scope="col"].sort-desc {
+	/* url: <https://en.wikipedia.org/w/resources/src/jquery.tablesorter.styles/images/sort_up.svg> */
+	background-image: url("data:image/svg+xml,%3C?xml%20version=%221.0%22%20encoding=%22UTF-8%22?%3E%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2221%22%20height=%224%22%20viewBox=%220%200%2021%204%22%3E%20%3Cpath%20d=%22m6.5%204%204-4%204%204z%22/%3E%3C/svg%3E");
+}
