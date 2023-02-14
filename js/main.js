@@ -2,13 +2,12 @@
 "use strict"
 
 const $ = document.querySelector.bind(document)
-const $$ = document.querySelectorAll.bind(document)
+const $$ = (sel) => [...document.querySelectorAll(sel)]
 const $head = document.head || document
 const $body = document.body || document
 const $create = (tag, ...props) => {
 	const $el = document.createElement(tag)
-	Object.assign($el, ...props)
-	return $el
+	return Object.assign($el, ...props)
 }
 
 const arrProto = {
@@ -39,7 +38,9 @@ const arrProto = {
 
 const elProto = {
 	$: Element.prototype.querySelector,
-	$$: Element.prototype.querySelectorAll,
+	$$(sel) {
+		return [...this.querySelectorAll(sel)]
+	},
 	appendAfter($el) {
 		// https://stackoverflow.com/a/5192810/9281985
 		$el.parentNode.insertBefore(this, $el.nextSibling)
@@ -145,5 +146,5 @@ const assignToProto = (target, source) => {
 assignToProto(Array, arrProto)
 assignToProto(Element, elProto)
 window.stairz = stairz
-console.log("Hello world!")
+console.log("Hello there, world!!!")
 })();
