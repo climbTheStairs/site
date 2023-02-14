@@ -71,8 +71,8 @@ zapier.com##.hello-pop-up, .hello-pop-up--not-top
 ||fncstatic.com^$3p
 ||gannettdigital.com^$3p
 ||gannett-cdn.com^$3p
-||google.*^$3p,domain=~chromium.org|~translate.goog|~youtube.com
-||gstatic.com^$3p,domain=~chromium.org|~google.com|~translate.goog
+||google.*^$3p,domain=~chromium.org|~google|~translate.goog|~youtube.com
+||gstatic.com^$3p,domain=~chromium.org|~google.com|~google|~translate.goog
 ||meredithcorp.io^$3p
 ||pushauction.com^$3p
 ||reddit.com^$3p,domain=~removeddit.com
@@ -103,7 +103,7 @@ zapier.com##.hello-pop-up, .hello-pop-up--not-top
 ||google.com/*^v=tz^$image
 ||google.com/*^tz=*^$image
 ||docs.google.com/*/naLogImpressions^$xhr,important
-||docs.google.com/forms/*/draftresponse^$xhr,important
+!||docs.google.com/forms/*/draftresponse^$xhr,important
 ||youtube.com/api/stats/$image
 ||chromium.org/v1/logging^$xhr,important
 www.google.com##+js(ignore-target-blank)
@@ -189,6 +189,7 @@ www.google.com###rc-imageselect :is(div.rc-imageselect-tile, .rc-imageselect-dyn
 !!! Load YouTube embed
 @@||youtube.com/iframe_api^$script
 @@||youtube.com/s/player/$script
+@@||youtube.com^$frame
 
 !! News
 @@||*.vtt^$media
