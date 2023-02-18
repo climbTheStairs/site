@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>List of media</title>
+	<style>:root {
+	--table-border: 1px solid black;
+	--table-cell-padding-block: 0px;
+	--table-cell-padding-inline: 8px;
+	--table-thead-bg: #0e0;
+}
+tbody > tr:nth-child(even) {
+	background: #eee;
+}</style>
+	<link rel="stylesheet" href="https://climbthestairs.org/css/sortable.css" />
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th class="sortable" scope="col">Title</th>
+				<th class="sortable" scope="col">Format</th>
+				<th class="sortable sort-num" scope="col">Rating</th>
+				<th class="sortable" scope="col">Status</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{- range .Body}}
+			<tr>
+				<td>{{.title}}</td>
+				<td>{{.format}}</td>
+				<td>{{.rating}}</td>
+				<td>{{.completed}}</td>
+			</tr>
+			{{- end}}
+		</tbody>
+	</table>
+	<script src="https://climbthestairs.org/js/sortable.js"></script>
+	<script>;(() => {
+"use strict"
+const $$ = (sel) => [...document.querySelectorAll(sel)]
+const a$th = $$("th")
+a$th.find($th => $th.textContent == "Title").click()
+a$th.find($th => $th.textContent == "Format").click()
+a$th.find($th => $th.textContent == "Status").click()
+a$th.find($th => $th.textContent == "Status").click()
+})();</script>
+</body>
+</html>
