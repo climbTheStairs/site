@@ -1,15 +1,15 @@
 .no-scroll {
-    scrollbar-width: none;
+	scrollbar-width: none;
 }
 .no-scroll::-webkit-scrollbar {
-    display: none;
+	display: none;
 }
 .hidden {
-    display: none;
+	display: none;
 }
 .paused {
-    animation-play-state: paused;
+	animation-play-state: paused;
 }
 .mirrored {
-    transform: scaleX(-1);
+	transform: scaleX(-1);
 }
