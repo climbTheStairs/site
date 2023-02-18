@@ -39,7 +39,7 @@
 // example.com##+js(stairz)
 ;(() => {
 	const $script = document.createElement("script")
-	$script.src = "https://climbthestairs.org/default/js/main.js"
+	$script.src = "https://climbthestairs.org/js/stairz.js"
 	const $body = document.body || document
 	$body.append($script)
 	$script.remove()
