@@ -13,7 +13,7 @@
 tbody > tr:nth-child(even) {
 	background: #eee;
 }</style>
-	<link rel="stylesheet" href="https://climbthestairs.org/css/sortable.css" />
+	<link rel="stylesheet" href="/css/sortable.css" />
 </head>
 <body>
 	<table>
@@ -53,7 +53,7 @@ while ($ln = fgets(STDIN)) {
 ?>
 		</tbody>
 	</table>
-	<script src="https://climbthestairs.org/js/sortable.js"></script>
+	<script src="/js/sortable.js"></script>
 	<script>;(() => {
 "use strict"
 const $$ = (sel) => [...document.querySelectorAll(sel)]
