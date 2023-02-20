@@ -27,7 +27,9 @@ tbody > tr:nth-child(even) {
 		</thead>
 		<tbody>
 <?php
-if (!($head = fgets(STDIN))) {
+$f = fopen(getenv("HOME") . "/me/ficls.tsv", "r");
+
+if (!($head = fgets($f))) {
 	fwrite(STDERR, "head missing\n");
 	exit(1);
 }
@@ -36,7 +38,7 @@ if (count($head) !== 4) {
 	fwrite(STDERR, "head does not contain 4 fields\n");
 	exit(1);
 }
-while ($ln = fgets(STDIN)) {
+while ($ln = fgets($f)) {
 	$ln = explode("\t", rtrim($ln, "\n"));
 	if (count($ln) !== 4) {
 		fwrite(STDERR, "line does not contain 4 fields\n");

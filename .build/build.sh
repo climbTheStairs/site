@@ -7,7 +7,5 @@ medir="$HOME/me"
 #tsv template "$builddir/ficls.html.template" \
 #	< "$medir/ficls.tsv" \
 #	> "$rootdir/ficls/index.html"
-php "$builddir/ficls.php" \
-	< "$medir/ficls.tsv" \
-	> "$rootdir/ficls/index.html"
+php "$builddir/ficls.php" > "$rootdir/ficls/index.html"
 
