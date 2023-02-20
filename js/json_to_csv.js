@@ -2,6 +2,8 @@
 // https://stackoverflow.com/a/38218582
 ;(() => {
 	"use strict"
+
+	const { createDataResource, dl, subst } = stairz
 	
 	const ERR = {
 		badProps: "data[${i}] contains different properties",
@@ -10,7 +12,7 @@
 		notArray: "data is not an array",
 	}
 	
-	const jsonToCsv = (data, fName = "data") => {
+	const jsonToCsv = (data, fname = "data") => {
 		if (!Array.isArray(data))
 			throw new TypeError(ERR.notArray)
 		if (!data.length)
@@ -18,7 +20,7 @@
 		const keys = Object.keys(data[0])
 		for (let i = 1, l = data.length; i < l; i++)
 			if (!Object.keys(data[i]).equals(keys))
-				throw new TypeError(stairz.subst(ERR.badProps, { i }))
+				throw new TypeError(subst(ERR.badProps, { i }))
 
 		const stringify = (val, i) => {
 			const type = typeof val
@@ -27,7 +29,7 @@
 			if (["boolean", "number"].includes(type))
 				return val.toString()
 			if (type !== "string")
-				throw new TypeError(stairz.susbst(ERR.badType, { i, type }))
+				throw new TypeError(subst(ERR.badType, { i, type }))
 			if ([",", "\n", `""`].some(x => val.includes(x)))
 				return `"${val.replace(/"/g, `""`)}"`
 			return val
@@ -38,9 +40,9 @@
 			.join("\n")
 		
 		const mimeType = "text/csv;charset=UTF-8;header=present"
-		const resource = stairz.createDataResource(mimeType, csv)
-		stairz.dl(resource, fName)
+		const resource = createDataResource(mimeType, csv)
+		dl(resource, fname)
 	}
 	
-	window.stairz.jsonToCsv = jsonToCsv
+	Object.assign(stairz, { jsonToCsv })
 })();

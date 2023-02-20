@@ -1,7 +1,7 @@
 ;(() => {
 "use strict"
 
-const $$ = (sel) => [...document.querySelectorAll(sel)]
+const { $$ } = stairz
 
 const ncmp = (a, b) => {
 	if (Number.isNaN(a) && Number.isNaN(b))
@@ -46,4 +46,5 @@ const sortByCol = function() {
 for (const $th of $$(`th.sortable[scope="col"]`))
 	$th.addEventListener("click", sortByCol)
 
+Object.assign(stairz, { sortByCol })
 })();

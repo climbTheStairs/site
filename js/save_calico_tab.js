@@ -3,9 +3,9 @@
 ;(() => {
 	"use strict"
 
-	const { $$ } = stairz.getShortcuts()
+	const { $$, createDataResource, dl } = stairz
 	
-	const saveCalicoTab = (fName = "calico_tab_dl") => {
+	const saveCalicoTab = (fname = "calico_tab_dl") => {
 		const tables = [...$$("table.table")]
 		if (tables.length !== 1)
 			throw new TypeError("missing or multiple tables")
@@ -23,12 +23,12 @@
 			return data
 		})
 
-		const resource = stairz.createDataResource(
+		const resource = createDataResource(
 			"application/json",
 			JSON.stringify(data, null, 4),
 		)
-		stairz.dl(resource, fName)
+		dl(resource, fname)
 	}
 	
-	window.stairz.saveCalicoTab = saveCalicoTab
+	Object.assign(stairz, { saveCalicoTab })
 })();

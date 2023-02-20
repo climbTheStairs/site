@@ -10,9 +10,9 @@
 ;(() => {
 	"use strict"
 	
-	const { $, $$ } = stairz.getShortcuts()
+	const { $, $$, createDataResource, dl } = stairz
 	
-	const saveGoogleSheets = (fName = "google_sheets_dl") => {
+	const saveGoogleSheets = (fname = "google_sheets_dl") => {
 		const tables = [...$$("table.waffle")]
 		if (tables.length !== 1)
 			throw new TypeError("missing or multiple tables")
@@ -33,12 +33,12 @@
 			return data
 		})
 
-		const resource = stairz.createDataResource(
+		const resource = createDataResource(
 			"application/json",
 			JSON.stringify(data, null, 4),
 		)
-		stairz.dl(resource, fName)
+		dl(resource, fname)
 	}
 	
-	window.stairz.saveGoogleSheets = saveGoogleSheets
+	Object.assign(stairz, { saveGoogleSheets })
 })();
