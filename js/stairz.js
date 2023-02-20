@@ -25,7 +25,7 @@ const arrProto = {
 		return this[this.length - i]
 	},
 	random() {
-		return this[stairz.random(this.length)]
+		return this[Math.floor(Math.random() * this.length)]
 	},
 	remove(i) {
 		const [removed] = this.splice(i, 1)
@@ -74,6 +74,7 @@ const elProto = {
 }
 
 const stairz = {
+	$, $$, $head, $body, $create,
 	copy(value) {
 		const $tmp = $create("textarea", { value })
 		$tmp.appendTo($body).select()
@@ -83,53 +84,34 @@ const stairz = {
 	createDataResource(contentType, val) {
 		return `data:${contentType},${encodeURIComponent(val)}`
 	},
-	createMap(obj) {
-		const iter = Object.entries(obj)
-		return new Map(iter)
-	},
 	dl(href, download = "go_drink_water_and_do_hwk") {
-		const $a = $create("a", { href, download })
-		$a.click()
+		$create("a", { href, download }).click()
 	},
 	getRandStr(length = 50, charTypes = "luns") {
 		const chars = []
-		const allChars = stairz.createMap({
+		const allChars = {
 			l: "abcdefghijklmnopqrstuvwxyz".split(""),
 			u: "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""),
 			n: "0123456789".split(""),
 			s: "!@#$%^&*()-=_+,.".split(""),
-		})
+		}
 		for (const charType of charTypes)
-			chars.push(...allChars.get(charType))
+			chars.push(...allChars[charType])
 		const res = []
 		while (length--)
 			res.push(chars.random())
 		return res.join("")
 	},
-	getShortcuts() {
-		return { $, $$, $head, $body, $create }
-	},
-	glob() {
-		Object.assign(window, stairz.getShortcuts())
-	},
 	importModule(name) {
-		const src = `https://climbthestairs.org/default/js/${name}.js`
-		stairz.importScript(src)
+		stairz.importScript(`https://climbthestairs.org/js/${name}.js`)
 	},
 	importScript(src) {
-		const $script = $create("script", { src })
-		$script.appendTo($body).remove()
-	},
-	random(n) {
-		return Math.floor(Math.random() * n)
+		$create("script", { src }).appendTo($body).remove()
 	},
 	subst(str, substs) {
 		for (const [key, val] of Object.entries(substs))
 			str = str.replace("${" + key + "}", val)
 		return str
-	},
-	toss(err) {
-		throw err
 	},
 }
 
