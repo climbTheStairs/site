@@ -19,18 +19,24 @@ tbody > tr:nth-child(even) {
 		<thead>
 			<tr>
 				<th class="sortable" scope="col">Title</th>
-				<th class="sortable" scope="col">Format</th>
+				<th class="sortable sort-num" scope="col">Format</th>
 				<th class="sortable sort-num" scope="col">Rating</th>
-				<th class="sortable" scope="col">Status</th>
+				<th class="sortable sort-num" scope="col">Status</th>
 			</tr>
 		</thead>
 		<tbody>
 			{{- range .Body}}
 			<tr>
 				<td>{{.title}}</td>
-				<td>{{.format}}</td>
-				<td>{{.rating}}</td>
-				<td>{{.completed}}</td>
+				<td data-sort-val="{{.format}}">
+					{{- .format | int | map (slice "Novel" "TV" "Film" "Comic" "Game" "Musical") -}}
+				</td>
+				<td>{{if .rating -}}
+					{{- .rating | int | add 1 -}}
+				{{- end}}</td>
+				<td data-sort-val="{{.status}}">
+					{{- .status | int | map (slice "Completed" "In progress" "For later") -}}
+				</td>
 			</tr>
 			{{- end}}
 		</tbody>
