@@ -53,15 +53,15 @@ while ($ln = fgets(STDIN)) {
 ?>
 		</tbody>
 	</table>
+	<script src="/js/stairz.js"></script>
 	<script src="/js/sortable.js"></script>
 	<script>;(() => {
 "use strict"
-const $$ = (sel) => [...document.querySelectorAll(sel)]
+const { $$, sortByCol } = stairz
 const a$th = $$("th")
-a$th.find($th => $th.textContent == "Title").click()
-a$th.find($th => $th.textContent == "Format").click()
-a$th.find($th => $th.textContent == "Status").click()
-a$th.find($th => $th.textContent == "Status").click()
+sortByCol.bind(a$th.find($th => $th.textContent === "Title"))()
+sortByCol.bind(a$th.find($th => $th.textContent === "Format"))()
+sortByCol.bind(a$th.find($th => $th.textContent === "Status"))()
 })();</script>
 </body>
 </html>
