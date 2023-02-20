@@ -8,37 +8,37 @@
  * 3. Call `stairz.saveGoogleSheets()` in each window.
  */
 ;(() => {
-	"use strict"
-	
-	const { $, $$, createDataResource, dl } = stairz
-	
-	const saveGoogleSheets = (fname = "google_sheets_dl") => {
-		const tables = [...$$("table.waffle")]
-		if (tables.length !== 1)
-			throw new TypeError("missing or multiple tables")
-		const [$table] = tables
-		if ($table.$(":scope > thead").textContent.trim())
-			throw new TypeError("thead is not empty")
+"use strict"
 
-		const table = [...$table.$(":scope > tbody").children].map((row) => {
-			row = [...row.children]
-				.filter(cell => !cell.matches("th.row-headers-background"))
-				.map(cell => cell.innerText.trim())
-			return row
-		})
-		const keys = table.shift()
-		const data = table.map((row) => {
-			const data = {}
-			row.forEach((cell, i) => data[keys[i]] = cell)
-			return data
-		})
+const { $, $$, createDataResource, dl } = stairz
 
-		const resource = createDataResource(
-			"application/json",
-			JSON.stringify(data, null, 4),
-		)
-		dl(resource, fname)
-	}
-	
-	Object.assign(stairz, { saveGoogleSheets })
+const saveGoogleSheets = (fname = "google_sheets_dl") => {
+	const tables = [...$$("table.waffle")]
+	if (tables.length !== 1)
+		throw new TypeError("missing or multiple tables")
+	const [$table] = tables
+	if ($table.$(":scope > thead").textContent.trim())
+		throw new TypeError("thead is not empty")
+
+	const table = [...$table.$(":scope > tbody").children].map((row) => {
+		row = [...row.children]
+			.filter(cell => !cell.matches("th.row-headers-background"))
+			.map(cell => cell.innerText.trim())
+		return row
+	})
+	const keys = table.shift()
+	const data = table.map((row) => {
+		const data = {}
+		row.forEach((cell, i) => data[keys[i]] = cell)
+		return data
+	})
+
+	const resource = createDataResource(
+		"application/json",
+		JSON.stringify(data, null, 4),
+	)
+	dl(resource, fname)
+}
+
+Object.assign(stairz, { saveGoogleSheets })
 })();
