@@ -28,7 +28,10 @@ const genCmp = (process, num, order) => {
 const sortByCol = function() {
 	const $tbody = this.closest("table").tBodies[0]
 	const coli = Array.prototype.indexOf.call(this.parentNode.children, this)
-	const process = ($tr) => $tr.children[coli].textContent
+	const process = ($tr) => {
+		const $td = $tr.children[coli]
+		return $td.dataset.sortVal ?? $td.textContent
+	}
 	const num = this.classList.contains("sort-num")
 	const order = this.classList.contains("sort-asc")
 	if (order) {
