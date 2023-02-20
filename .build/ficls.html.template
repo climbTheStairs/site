@@ -29,13 +29,13 @@ tbody > tr:nth-child(even) {
 			<tr>
 				<td>{{.title}}</td>
 				<td data-sort-val="{{.format}}">
-					{{- .format | int | map (slice "Novel" "TV" "Film" "Comic" "Game" "Musical") -}}
+					{{- .format | int | index (mkslice "Novel" "TV" "Film" "Comic" "Game" "Musical") -}}
 				</td>
 				<td>{{if .rating -}}
 					{{- .rating | int | add 1 -}}
 				{{- end}}</td>
 				<td data-sort-val="{{.status}}">
-					{{- .status | int | map (slice "Completed" "In progress" "For later") -}}
+					{{- .status | int | index (mkslice "Completed" "In progress" "For later") -}}
 				</td>
 			</tr>
 			{{- end}}
