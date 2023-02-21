@@ -25,13 +25,14 @@ tbody > tr:nth-child(even) {
 			</tr>
 		</thead>
 		<tbody>
+			{{- $statusmap := map "completed" "0" "in progress" "1" "for later" "2" -}}
 			{{- range .Body}}
 			<tr>
 				<td>{{.title}}</td>
 				<td>{{.format}}</td>
 				<td>{{.rating}}</td>
 				<td {{/* */ -}}
-					data-sort-val="{{.status | index (map "completed" "0" "in progress" "1" "for later" "2")}}"
+					data-sort-val="{{.status | index $statusmap}}"
 				{{- /* */}}>{{.status}}</td>
 			</tr>
 			{{- end}}
