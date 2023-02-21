@@ -3,14 +3,30 @@
 <head>
 	<meta charset="utf-8" />
 	<title>List of media</title>
-	<style>:root {
+	<style>@import "https://fonts.googleapis.com/css?family=Ubuntu|Ubuntu+Mono";
+:root {
 	--table-border: 1px solid black;
-	--table-cell-padding-block: 0px;
+	--table-cell-padding-block: 2px;
 	--table-cell-padding-inline: 8px;
 	--table-thead-bg: #0e0;
 }
+body {
+	font-family: "Ubuntu", sans-serif;
+}
+thead th {
+	padding-block: 5px;
+}
 tbody > tr:nth-child(even) {
 	background: #eee;
+}
+body.dark {
+	--table-border: none;
+	--table-thead-bg: #80a;
+	background: #111;
+	color: #eee;
+}
+body.dark tbody > tr:nth-child(even) {
+	background: #222;
 }</style>
 	<link rel="stylesheet" href="/css/sortable.css" />
 </head>
