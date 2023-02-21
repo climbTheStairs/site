@@ -1,10 +1,10 @@
 table {
 	border-collapse: collapse;
-	border: var(--table-border);
 	width: 100%;
 }
 thead {
 	background: var(--table-thead-bg);
+	color: black;
 }
 th, td {
 	border: var(--table-border);
