@@ -31,9 +31,7 @@ tbody > tr:nth-child(even) {
 				<td>{{.title}}</td>
 				<td>{{.format}}</td>
 				<td>{{.rating}}</td>
-				<td {{/* */ -}}
-					data-sort-val="{{.status | index $statusmap}}"
-				{{- /* */}}>{{.status}}</td>
+				<td data-sort-val="{{.status | index $statusmap}}">{{.status}}</td>
 			</tr>
 			{{- end}}
 		</tbody>
