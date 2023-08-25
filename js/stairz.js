@@ -88,7 +88,8 @@ const stairz = {
 	$, $$, $head, $body, $create,
 	copy(value) {
 		const $tmp = $create("textarea", { value })
-		$tmp.appendTo($body).select()
+		$body.append($tmp)
+		$tmp.select()
 		document.execCommand("copy")
 		$tmp.remove()
 	},
@@ -102,26 +103,10 @@ const stairz = {
 		"Array": () => _extendProto(Array, _protoArray),
 		"Element": () => _extendProto(Element, _protoElement),
 	},
-	getRandStr(length = 50, charTypes = "luns") {
-		const chars = []
-		const allChars = {
-			l: "abcdefghijklmnopqrstuvwxyz".split(""),
-			u: "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""),
-			n: "0123456789".split(""),
-			s: "!@#$%^&*()-=_+,.".split(""),
-		}
-		for (const charType of charTypes)
-			chars.push(...allChars[charType])
-		const res = []
-		while (length--)
-			res.push(chars.random())
-		return res.join("")
-	},
-	importModule(name) {
-		stairz.importScript(`https://climbthestairs.org/js/${name}.js`)
-	},
 	importScript(src) {
-		$create("script", { src }).appendTo($body).remove()
+		const $script = $create("script", { src })
+		$body.append($script)
+		$script.remove()
 	},
 	subst(str, substs) {
 		for (const [key, val] of Object.entries(substs))
