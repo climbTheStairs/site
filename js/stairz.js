@@ -13,7 +13,7 @@ const _extendProto = (target, source) => {
 }
 
 const _protoArray = {
-	equals(arr) {
+	eq(arr) {
 		if (!Array.isArray(arr))
 			throw new TypeError("arg must be of type array")
 		if (this.length !== arr.length)
@@ -26,14 +26,14 @@ const _protoArray = {
 	neg(i) {
 		return this[this.length - i]
 	},
-	random() {
+	rand() {
 		return this[Math.floor(Math.random() * this.length)]
 	},
 	remove(i) {
 		const [removed] = this.splice(i, 1)
 		return removed
 	},
-	unique() {
+	uniq() {
 		return [...new Set(this)]
 	},
 }
@@ -86,13 +86,6 @@ const $create = (tag, ...props) => {
 
 const stairz = {
 	$, $$, $head, $body, $create,
-	copy(value) {
-		const $tmp = $create("textarea", { value })
-		$body.append($tmp)
-		$tmp.select()
-		document.execCommand("copy")
-		$tmp.remove()
-	},
 	createDataResource(contentType, val) {
 		return `data:${contentType},${encodeURIComponent(val)}`
 	},
@@ -103,7 +96,7 @@ const stairz = {
 		"Array": () => _extendProto(Array, _protoArray),
 		"Element": () => _extendProto(Element, _protoElement),
 	},
-	importScript(src) {
+	loadScript(src) {
 		const $script = $create("script", { src })
 		$body.append($script)
 		$script.remove()
@@ -112,6 +105,13 @@ const stairz = {
 		for (const [key, val] of Object.entries(substs))
 			str = str.replace("${" + key + "}", val)
 		return str
+	},
+	writeToClipboard(value) {
+		const $tmp = $create("textarea", { value })
+		$body.append($tmp)
+		$tmp.select()
+		document.execCommand("copy")
+		$tmp.remove()
 	},
 }
 
