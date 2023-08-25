@@ -1,7 +1,7 @@
 ;(() => {
 "use strict"
 
-const assignToProto = (target, source) => {
+const _extendProto = (target, source) => {
 	const proto = target.prototype
 	Object.entries(source).forEach(([key, val]) => {
 		const fullName = `${proto.constructor.name}.prototype.${key}`
@@ -11,10 +11,8 @@ const assignToProto = (target, source) => {
 		Object.defineProperty(proto, key, { enumerable: false })
 	})
 }
-assignToProto(Array, arrProto)
-assignToProto(Element, elProto)
 
-const arrProto = {
+const _protoArray = {
 	equals(arr) {
 		if (!Array.isArray(arr))
 			throw new TypeError("arg must be of type array")
@@ -40,7 +38,7 @@ const arrProto = {
 	},
 }
 
-const elProto = {
+const _protoElement = {
 	$: Element.prototype.querySelector,
 	$$(sel) {
 		return [...this.querySelectorAll(sel)]
@@ -99,6 +97,10 @@ const stairz = {
 	},
 	dl(href, download = "go_drink_water_and_do_hwk") {
 		$create("a", { href, download }).click()
+	},
+	extendProto: {
+		"Array": () => _extendProto(Array, _protoArray),
+		"Element": () => _extendProto(Element, _protoElement),
 	},
 	getRandStr(length = 50, charTypes = "luns") {
 		const chars = []
