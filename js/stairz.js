@@ -9,14 +9,13 @@ export {
 	writeToClipboard,
 }
 
-const _extendProto = (target, source) => {
-	const proto = target.prototype
-	Object.entries(source).forEach(([key, val]) => {
-		const fullName = `${proto.constructor.name}.prototype.${key}`
-		if (proto.hasOwnProperty(key))
-			console.warn(`Overriding ${fullName}!`)
-		proto[key] = val
-		Object.defineProperty(proto, key, { enumerable: false })
+const _extendProto = ({ prototype: proto }, source) => {
+	Object.entries(source).forEach(([key, value]) => {
+		if (proto[key] === value)
+			return
+		if (Object.hasOwn(proto, key))
+			console.warn(`Overriding ${proto.constructor.name}.prototype.${key}!`)
+		Object.defineProperty(proto, key, { value, enumerable: false })
 	})
 }
 
