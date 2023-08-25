@@ -1,5 +1,13 @@
-;(() => {
-"use strict"
+export {
+	$, $$, $head, $body, $create,
+	createDataResource,
+	dl,
+	extendProto,
+	loadScript,
+	onOrIfDomContentLoaded,
+	subst,
+	writeToClipboard,
+}
 
 const _extendProto = (target, source) => {
 	const proto = target.prototype
@@ -84,37 +92,37 @@ const $create = (tag, ...props) => {
 	return Object.assign($el, ...props)
 }
 
-const stairz = {
-	$, $$, $head, $body, $create,
-	createDataResource(contentType, val) {
-		return `data:${contentType},${encodeURIComponent(val)}`
-	},
-	dl(href, download = "go_drink_water_and_do_hwk") {
-		$create("a", { href, download }).click()
-	},
-	extendProto: {
-		"Array": () => _extendProto(Array, _protoArray),
-		"Element": () => _extendProto(Element, _protoElement),
-	},
-	loadScript(src) {
-		const $script = $create("script", { src })
-		$body.append($script)
-		$script.remove()
-	},
-	subst(str, substs) {
-		for (const [key, val] of Object.entries(substs))
-			str = str.replace("${" + key + "}", val)
-		return str
-	},
-	writeToClipboard(value) {
-		const $tmp = $create("textarea", { value })
-		$body.append($tmp)
-		$tmp.select()
-		document.execCommand("copy")
-		$tmp.remove()
-	},
+const createDataResource = (contentType, val) => {
+	return `data:${contentType},${encodeURIComponent(val)}`
 }
 
-window.stairz = stairz
+const dl = (href, download = "go_drink_water_and_do_hwk") => {
+	$create("a", { href, download }).click()
+}
+
+const extendProto = {
+	"Array": () => _extendProto(Array, _protoArray),
+	"Element": () => _extendProto(Element, _protoElement),
+}
+
+const loadScript = (src) => {
+	const $script = $create("script", { src })
+	$body.append($script)
+	$script.remove()
+}
+
+const subst = (str, substs) => {
+	for (const [key, val] of Object.entries(substs))
+		str = str.replace("${" + key + "}", val)
+	return str
+}
+
+const writeToClipboard = (value) => {
+	const $tmp = $create("textarea", { value })
+	$body.append($tmp)
+	$tmp.select()
+	document.execCommand("copy")
+	$tmp.remove()
+}
+
 console.log("Hello there, world!!!")
-})();
