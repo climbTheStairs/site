@@ -1,14 +1,18 @@
 ;(() => {
 "use strict"
 
-const $ = document.querySelector.bind(document)
-const $$ = (sel) => [...document.querySelectorAll(sel)]
-const $head = document.head || document
-const $body = document.body || document
-const $create = (tag, ...props) => {
-	const $el = document.createElement(tag)
-	return Object.assign($el, ...props)
+const assignToProto = (target, source) => {
+	const proto = target.prototype
+	Object.entries(source).forEach(([key, val]) => {
+		const fullName = `${proto.constructor.name}.prototype.${key}`
+		if (proto.hasOwnProperty(key))
+			console.warn(`Overriding ${fullName}!`)
+		proto[key] = val
+		Object.defineProperty(proto, key, { enumerable: false })
+	})
 }
+assignToProto(Array, arrProto)
+assignToProto(Element, elProto)
 
 const arrProto = {
 	equals(arr) {
@@ -73,6 +77,15 @@ const elProto = {
 	},
 }
 
+const $ = document.querySelector.bind(document)
+const $$ = (sel) => [...document.querySelectorAll(sel)]
+const $head = document.head || document
+const $body = document.body || document
+const $create = (tag, ...props) => {
+	const $el = document.createElement(tag)
+	return Object.assign($el, ...props)
+}
+
 const stairz = {
 	$, $$, $head, $body, $create,
 	copy(value) {
@@ -115,18 +128,6 @@ const stairz = {
 	},
 }
 
-const assignToProto = (target, source) => {
-	const proto = target.prototype
-	Object.entries(source).forEach(([key, val]) => {
-		const fullName = `${proto.constructor.name}.prototype.${key}`
-		if (proto.hasOwnProperty(key))
-			console.warn(`Overriding ${fullName}!`)
-		proto[key] = val
-		Object.defineProperty(proto, key, { enumerable: false })
-	})
-}
-assignToProto(Array, arrProto)
-assignToProto(Element, elProto)
 window.stairz = stairz
 console.log("Hello there, world!!!")
 })();
