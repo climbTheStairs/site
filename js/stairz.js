@@ -51,7 +51,7 @@ const _protoElement = {
 		return [...this.querySelectorAll(sel)]
 	},
 	appendAfter($el) {
-		// https://stackoverflow.com/a/5192810/9281985
+		// <https://stackoverflow.com/a/5192810/9281985>
 		$el.parentNode.insertBefore(this, $el.nextSibling)
 		return this
 	},
@@ -108,6 +108,14 @@ const loadScript = (src) => {
 	const $script = $create("script", { src })
 	$body.append($script)
 	$script.remove()
+}
+
+// <https://stackoverflow.com/a/43245774/9281985>
+const onOrIfDomContentLoaded = (fn) => {
+	if (document.readyState === "loading")
+		document.addEventListener("DOMContentLoaded", fn)
+	else
+		fn()
 }
 
 const subst = (str, substs) => {
