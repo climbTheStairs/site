@@ -120,7 +120,7 @@ const onOrIfDomContentLoaded = (fn) => {
 
 const subst = (str, substs) => {
 	for (const [key, val] of Object.entries(substs))
-		str = str.replace("${" + key + "}", val)
+		str = str.replaceAll("${" + key + "}", val)
 	return str
 }
 
