@@ -95,8 +95,8 @@ const createDataResource = (contentType, val) => {
 	return `data:${contentType},${encodeURIComponent(val)}`
 }
 
-const dl = (href, download = "go_drink_water_and_do_hwk") => {
-	$create("a", { href, download }).click()
+const dl = (url, download = "unnamed") => {
+	$create("a", { href: url, download }).click()
 }
 
 const extendProto = {
@@ -124,4 +124,5 @@ const writeToClipboard = (value) => {
 	$tmp.remove()
 }
 
-console.log("Hello there, world!!!")
+console.debug("Hello there, world!!!")
+console.debug("Loaded stairz.js!")
