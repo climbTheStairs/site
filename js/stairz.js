@@ -50,21 +50,12 @@ const _protoElement = {
 	$$(sel) {
 		return [...this.querySelectorAll(sel)]
 	},
-	after($el) {
-		this.parentNode.insertBefore($el, this.nextSibling)
-		return this
-	},
-	before($el) {
-		this.parentNode.insertBefore($el, this)
-		return this
-	},
 	insertAfter($el) {
-		// <https://stackoverflow.com/a/5192810/9281985>
-		$el.parentNode.insertBefore(this, $el.nextSibling)
+		$el.after(this)
 		return this
 	},
 	insertBefore($el) {
-		$el.parentNode.insertBefore(this, $el)
+		$el.before(this)
 		return this
 	},
 	appendTo($el) {
