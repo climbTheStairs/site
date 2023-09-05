@@ -9,13 +9,13 @@ export {
 	writeToClipboard,
 }
 
-const _extendProto = ({ prototype: proto }, source) => {
+const _extendProto = ({prototype: proto}, source) => {
 	Object.entries(source).forEach(([key, value]) => {
 		if (proto[key] === value)
 			return
 		if (Object.hasOwn(proto, key))
 			console.warn(`Overriding ${proto.constructor.name}.prototype.${key}!`)
-		Object.defineProperty(proto, key, { value, enumerable: false })
+		Object.defineProperty(proto, key, {value, enumerable: false})
 	})
 }
 
@@ -67,15 +67,15 @@ const _protoElement = {
 		return this
 	},
 	fade(cb, dur = 500) {
-		const { opacity, transition } = this.style
+		const {opacity, transition} = this.style
 		this.css({
 			transition: `opacity ${dur}ms`,
 			opacity: 0,
 		})
 		setTimeout(() => {
 			cb()
-			this.css({ opacity })
-			setTimeout(() => this.css({ transition }), dur)
+			this.css({opacity})
+			setTimeout(() => this.css({transition}), dur)
 		}, dur)
 		return this
 	},
@@ -95,7 +95,7 @@ const createDataResource = (contentType, val) => {
 }
 
 const dl = (url, download = "unnamed") => {
-	$create("a", { href: url, download }).click()
+	$create("a", {href: url, download}).click()
 }
 
 const extendProto = {
@@ -104,7 +104,7 @@ const extendProto = {
 }
 
 const loadScript = (src) => {
-	const $script = $create("script", { src })
+	const $script = $create("script", {src})
 	$body.append($script)
 	$script.remove()
 }
@@ -124,7 +124,7 @@ const subst = (str, substs) => {
 }
 
 const writeToClipboard = (value) => {
-	const $tmp = $create("textarea", { value })
+	const $tmp = $create("textarea", {value})
 	$body.append($tmp)
 	$tmp.select()
 	document.execCommand("copy")
