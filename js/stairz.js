@@ -109,7 +109,7 @@ const loadScript = (src) => {
 	$script.remove()
 }
 
-// <https://stackoverflow.com/a/43245774/9281985>
+// <https://stackoverflow.com/a/43245774>
 const onOrIfDomContentLoaded = (fn) => {
 	if (document.readyState === "loading")
 		document.addEventListener("DOMContentLoaded", fn)
