@@ -90,7 +90,7 @@ const $create = (tag, ...props) => {
 	return Object.assign($el, ...props)
 }
 
-const createDataResource = (contentType, val) => {
+const toDataRes = (contentType, val) => {
 	return `data:${contentType},${encodeURIComponent(val)}`
 }
 
