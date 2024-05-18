@@ -1,6 +1,6 @@
 export {
 	$, $$, $head, $body, $create,
-	createDataResource,
+	toDataRes,
 	dl,
 	extendProto,
 	loadScript,
