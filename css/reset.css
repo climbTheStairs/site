@@ -1,18 +1,10 @@
-/**
- * Reset default browser styles
- */
-
+/* Reset default browser styles */
 * {
 	background: initial;
 	border: initial;
 	box-sizing: border-box;
 	margin: initial
 	padding: initial
-}
-
-::selection {
-	background: #0f0;
-	color: white;
 }
 
 /* Set page to full height */
