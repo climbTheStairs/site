@@ -26,8 +26,7 @@
 		realAttr = "src"
 	const unlazyLoad = () => {
 		$$(`[${lazyAttr}]`).forEach(($el) => {
-			const val = $el.getAttribute(lazyAttr)
-			$el.setAttribute(realAttr, val)
+			$el.setAttribute(realAttr, $el.getAttribute(lazyAttr))
 		})
 		console.log(`+js(unlazy-load, ${lazyAttr}, ${realAttr})`)
 	}
