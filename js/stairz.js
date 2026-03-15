@@ -1,5 +1,5 @@
 export {
-	$, $$, $head, $body, $create,
+	$, $$, $create,
 	toDatRes, dl,
 	extendProto,
 	loadScript,
@@ -35,10 +35,6 @@ const _protoArray = {
 }
 
 const _protoElement = {
-	$: Element.prototype.querySelector,
-	$$(sel) {
-		return [...this.querySelectorAll(sel)]
-	},
 	insertAfter($el) {
 		$el.after(this)
 		return this
@@ -70,10 +66,18 @@ const _protoElement = {
 	},
 }
 
-const $ = document.querySelector.bind(document)
-const $$ = (sel) => [...document.querySelectorAll(sel)]
-const $head = document.head || document
-const $body = document.body || document
+const runIfFn = (x, ...args) => typeof(x) === "function" ? x(args) : x
+const $$ = (sel, $par=document) => [...$par.querySelectorAll(sel)]
+const $  = (sel, $par=document, failIfMult=false) => {
+	const [$x, ...rest] = $$(sel, $par)
+	if (rest.length && runIfFn(failIfMult, sel, $par))
+		return null
+	return $x ?? null
+}
+$.warn = (sel, $par) => {
+	$par = $par === document ? ":scope " : ""
+	console.warn(`$(${$par}${sel}) not uniq`)
+}
 const $create = (tag, ...props) =>
 	Object.assign(document.createElement(tag), ...props)
 
