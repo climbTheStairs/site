@@ -2,13 +2,12 @@
 // https://stackoverflow.com/a/38218582
 ;(() => {
 "use strict"
-
-const { createDataResource, dl, subst } = stairz
+const {toDatRes, dl, subst} = stairz
 
 const ERR = {
 	badProps: "data[${i}] contains different properties",
-	badType: "data[${i}] contains bad datatype \"${type}\"",
-	empty: "data is empty",
+	badType:  "data[${i}] contains bad datatype \"${type}\"",
+	empty:    "data is empty",
 	notArray: "data is not an array",
 }
 
@@ -20,7 +19,7 @@ const jsonToCsv = (data, fname = "data") => {
 	const keys = Object.keys(data[0])
 	for (let i = 1, l = data.length; i < l; i++)
 		if (!Object.keys(data[i]).equals(keys))
-			throw new TypeError(subst(ERR.badProps, { i }))
+			throw new TypeError(subst(ERR.badProps, {i}))
 
 	const stringify = (val, i) => {
 		const type = typeof val
@@ -29,7 +28,7 @@ const jsonToCsv = (data, fname = "data") => {
 		if (["boolean", "number"].includes(type))
 			return val.toString()
 		if (type !== "string")
-			throw new TypeError(subst(ERR.badType, { i, type }))
+			throw new TypeError(subst(ERR.badType, {i, type}))
 		if ([",", "\n", `""`].some(x => val.includes(x)))
 			return `"${val.replace(/"/g, `""`)}"`
 		return val
@@ -40,9 +39,8 @@ const jsonToCsv = (data, fname = "data") => {
 		.join("\n")
 	
 	const mimeType = "text/csv;charset=UTF-8;header=present"
-	const resource = createDataResource(mimeType, csv)
-	dl(resource, fname)
+	dl(toDatRes(mimeType, csv), fname)
 }
 
-Object.assign(stairz, { jsonToCsv })
+Object.assign(stairz, {jsonToCsv})
 })();

@@ -2,8 +2,7 @@
 // Make sure you aren't hovering over any tabs and creating popups!
 ;(() => {
 "use strict"
-
-const { $$, createDataResource, dl } = stairz
+const {$$, toDatRes, dl} = stairz
 
 const saveCalicoTab = (fname = "calico_tab_dl") => {
 	const tables = [...$$("table.table")]
@@ -23,12 +22,8 @@ const saveCalicoTab = (fname = "calico_tab_dl") => {
 		return data
 	})
 
-	const resource = createDataResource(
-		"application/json",
-		JSON.stringify(data, null, 4),
-	)
-	dl(resource, fname)
+	dl(toDatRes("application/json", JSON.stringify(data, null, 4)), fname)
 }
 
-Object.assign(stairz, { saveCalicoTab })
+Object.assign(stairz, {saveCalicoTab})
 })();

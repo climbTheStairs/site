@@ -9,8 +9,7 @@
  */
 ;(() => {
 "use strict"
-
-const { $, $$, createDataResource, dl } = stairz
+const {$, $$, toDatRes, dl} = stairz
 
 const saveGoogleSheets = (fname = "google_sheets_dl") => {
 	const tables = [...$$("table.waffle")]
@@ -33,12 +32,8 @@ const saveGoogleSheets = (fname = "google_sheets_dl") => {
 		return data
 	})
 
-	const resource = createDataResource(
-		"application/json",
-		JSON.stringify(data, null, 4),
-	)
-	dl(resource, fname)
+	dl(toDatRes("application/json", JSON.stringify(data, null, 4)), fname)
 }
 
-Object.assign(stairz, { saveGoogleSheets })
+Object.assign(stairz, {saveGoogleSheets})
 })();

@@ -1,22 +1,11 @@
 export {
 	$, $$, $head, $body, $create,
-	toDataRes,
-	dl,
+	toDatRes, dl,
 	extendProto,
 	loadScript,
 	onOrIfDomContentLoaded,
 	subst,
 	writeToClipboard,
-}
-
-const _extendProto = ({prototype: proto}, source) => {
-	Object.entries(source).forEach(([key, value]) => {
-		if (proto[key] === value)
-			return
-		if (Object.hasOwn(proto, key))
-			console.warn(`Overriding ${proto.constructor.name}.prototype.${key}!`)
-		Object.defineProperty(proto, key, {value, enumerable: false})
-	})
 }
 
 const _protoArray = {
@@ -85,21 +74,25 @@ const $ = document.querySelector.bind(document)
 const $$ = (sel) => [...document.querySelectorAll(sel)]
 const $head = document.head || document
 const $body = document.body || document
-const $create = (tag, ...props) => {
-	const $el = document.createElement(tag)
-	return Object.assign($el, ...props)
-}
+const $create = (tag, ...props) =>
+	Object.assign(document.createElement(tag), ...props)
 
-const toDataRes = (contentType, val) => {
-	return `data:${contentType},${encodeURIComponent(val)}`
-}
+const toDatRes = (contentType, val) =>
+	`data:${contentType},${encodeURIComponent(val)}`
 
-const dl = (url, download = "unnamed") => {
+const dl = (url, download = "unnamed") =>
 	$create("a", {href: url, download}).click()
-}
 
+const _extendProto = ({prototype: proto}, src) =>
+	Object.entries(src).forEach(([key, value]) => {
+		if (proto[key] === value)
+			return
+		if (Object.hasOwn(proto, key))
+			console.warn(`Overriding ${proto.constructor.name}.prototype.${key}!`)
+		Object.defineProperty(proto, key, {value, enumerable: false})
+	})
 const extendProto = {
-	"Array": () => _extendProto(Array, _protoArray),
+	"Array":   () => _extendProto(Array,   _protoArray),
 	"Element": () => _extendProto(Element, _protoElement),
 }
 
